@@ -110,6 +110,10 @@ app.listen(80);
 /ready
 /startup
 
-Very Important Interview Answer:
+🎯 Very Important Interview Answer:
 Where is /health defined?
 “The /health, /ready, and /startup endpoints are implemented inside the application code. Kubernetes probes simply call these endpoints to check container health.”
+
+🎯 Final Interview Answer
+“Without probes Kubernetes only monitors whether the container process is running. Probes allow Kubernetes to verify application
+health and take actions like restarting containers or removing pods from service traffic.”
