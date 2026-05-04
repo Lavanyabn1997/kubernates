@@ -1,0 +1,64 @@
+eksctl create cluster -f cluster.yaml
+eksctl create cluster --name my-eks-cluster --nodegroup-name my-worker-node --node-type t2.micro --nodes 3 --managed --region us-west-2
+eksctl delete cluster --name my-eks-cluster --region us-east-1
+kubectl cluster-info
+kubectl get nodes
+kubectl describe node <node-name>
+kubectl label nodes node1 gpu=true
+kubectl get nodes -o wide
+kubectl drain <node-name> --ignore-daemonsets
+kubectl uncordon <node-name>
+kubectl cordon <node-name>
+kubectl top nodes
+kubectl get nodes --show-labels
+kubectl taint nodes <node-name> key=value:NoSchedule
+kubectl taint nodes <node-name> key=value:NoSchedule-
+kubectl get pods
+kubectl get pods -o wide
+kubectl describe pod <pod-name>
+kubectl delete pod <pod-name>
+kubectl logs <pod-name>
+kubectl exec -it <pod-name> -- /bin/bash
+kubectl get pods -w   # live watch
+kubectl get deployments
+kubectl describe deployment <name>
+kubectl apply -f deployment.yaml
+kubectl delete deployment <name>
+kubectl rollout status deployment <name>
+kubectl rollout history deployment <name>
+kubectl rollout undo deployment <name>
+kubectl rollout undo deployment <name> --to-revision=1
+k rollout status deployment <name>
+kubectl rollout restart deployment <name>
+kubectl rollout history deployment <name> --revision=5
+kubectl get deployment <name> -o yaml > backup.yaml
+kubectl set image deployment <name> nginx=nginx:1.28
+kubectl get svc
+kubectl describe svc <name>
+kubectl apply -f svc.yaml
+kubectl delete svc <name>
+kubectl get all
+kubectl describe <resource> <name>
+kubectl logs -f <pod>
+kubectl get events
+kubectl api-resources
+kubectl explain pod
+kubectl create namespace <name>
+kubectl get ns
+kubectl apply -f pod.yaml -n <name>
+kubectl get pods -n <name>
+kubectl get all -n <name>
+kubectl delete namespace <name>
+kubectl get namespaces -l app=hiqode-demo
+kubectl get rs
+kubectl describe rs <replicaset-name>
+kubectl apply -f replicaset.yaml
+kubectl delete rs <replicaset-name>
+kubectl get rs -A
+kubectl get rs -o wide
+kubectl scale rs <name> --replicas=5
+kubectl get ingress -n <namespaces> -w
+kubectl logs -n kube-system -l app.kubernetes.io/name=aws-load-balancer-controller --tail=50
+kubectl describe ingress hiqode-ingress -n hiqode
+kubectl get pods -n kube-system
+helm uninstall aws-load-balancer-controller -n kube-system
